@@ -14,13 +14,15 @@ def run_expresso(files)
 end
 
 def run_jasmine(files)
-  puts "Run jasmin"
+  puts "Run jasmine"
   files = files.delete_if { |file| file !~ /.js$/ }
   if files.find { |file| file !~ /\^.\/spec/ }
     files = Dir.entries("./spec/").select { |f| f =~ /.js$/ }.collect { |f| "./spec/#{f}" }
   end
-  puts "node vendor\\jasmine-node\\cli.js --noColor #{files.join(" ")}"
-  puts `node vendor\\jasmine-node\\cli.js --noColor #{files.join(" ")}`.gsub(/\n\r/, "\n")
+  for file in files
+    puts "node vendor/jasmine-node/cli.js --noColor #{file}"
+    puts `node vendor/jasmine-node/cli.js --noColor spec`.gsub(/\n\r/, "\n")
+  end
 end
 
 
