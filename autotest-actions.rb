@@ -1,6 +1,6 @@
 def compile_coffee(file)
   puts "compiling #{file}"
-  puts `node l.js #{file} p > #{file.gsub(/.coffee$/, ".js")}`.chomp
+  puts `node coffee-compile.js #{file} > #{file.gsub(/.coffee$/, ".js")}`.chomp
 end
 
 def run_expresso(files)
