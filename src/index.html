@@ -1,0 +1,23 @@
+<html>
+<body>
+<table id="gameTable">
+<tbody>
+
+</tbody>
+</table>
+<script type="text/javascript" src="jquery-1.6.4.js"></script>
+<script type="text/javascript" src="minefield.js"></script>
+<script type="text/javascript">
+var clickCell = function() {
+  field.reveal($(this).attr("data-row"),$(this).attr("data-column"));
+  gameTable.innerHTML = field.render_html();
+  $("#gameTable td").click(clickCell);
+};
+
+var field = new exports.Minefield(["."])
+field.set_random_mines(5,5)
+gameTable.innerHTML = field.render_html()
+$("#gameTable td").click(clickCell);
+</script>
+</body>
+</html>
